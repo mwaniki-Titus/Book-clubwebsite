@@ -1,38 +1,37 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import { Link, useNavigate } from "react-router-dom";
-import "./App.jsx"
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login({ onLogin }) {
   const navigate = useNavigate();
 
   const initialValues = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().required("Username is required"),
-    password: Yup.string().required("Password is required"),
+    username: Yup.string().required('Username is required'),
+    password: Yup.string().required('Password is required'),
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
-    fetch("/login", {
-      method: "POST",
+    fetch('/login', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
           if (user.error) {
-            alert("Invalid username or password!");
+            alert('Invalid username or password!');
           } else {
             onLogin(user);
-            console.log(user.email)
-            navigate("/events");
-            
+            console.log(user.email);
+            navigate('/home');
           }
         });
       }
@@ -88,8 +87,8 @@ function Login({ onLogin }) {
 
                 <div className="form_message">
                   <p>
-                    Don't have an account?{" "}
-                    <Link className="login_link" to="/signup">
+                    Don't have an account?{' '}
+                    <Link className="login_link" to="/sign-up">
                       Signup
                     </Link>
                   </p>
@@ -112,4 +111,3 @@ function Login({ onLogin }) {
 }
 
 export default Login;
-
