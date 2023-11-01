@@ -89,23 +89,6 @@ function Signup({ onSignup }) {
 
               <div className="input_fields">
                 <label htmlFor="password" className="form-label">
-                  Phone Number:
-                </label>
-                <Field
-                  type="text"
-                  name="phone_number"
-                  className="form-control"
-                  placeholder="Enter your phone number"
-                />
-                <ErrorMessage
-                  name="phone_number"
-                  component="div"
-                  className="error"
-                />
-              </div>
-
-              <div className="input_fields">
-                <label htmlFor="password" className="form-label">
                   Password:
                 </label>
                 <Field
