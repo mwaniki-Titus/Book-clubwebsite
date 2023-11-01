@@ -7,7 +7,6 @@ import MyAccount from './MyAccount';
 import LogIn from './LogIn';
 import SignUp from './SignUp';
 import JoinBookClub from './JoinBookClub';
-
 import './App.css';
 
 const App = () => {
