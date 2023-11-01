@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar'; // Import your Navbar component
@@ -11,8 +10,6 @@ import JoinBookClub from './JoinBookClub';
 
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-
-
 import './App.css'
 
 const App = () => {
@@ -24,8 +21,8 @@ const App = () => {
           <Route exact='true' path="/" element={<Home/>} />
           <Route path="/create-club" element={<CreateClub/>} />
           <Route path="/my-account" element={<MyAccount/>} />
-          <Route path="/login" element={<LogIn/>} />
-          <Route path="/signup" element={<SignUp/>} />
+          <Route path="/sign-in" element={<LogIn/>} />
+          <Route path="/sign-up" element={<SignUp/>} />
           <Route path="/join-book-club" element={<JoinBookClub/>} />
       </Routes>
       </>

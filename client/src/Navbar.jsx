@@ -37,11 +37,11 @@ function Navbar({ user, onLogout }) {
       ) : (
         // Display "Sign In" and "Sign Up" when the user is not authenticated
         <>
-          <Link to="/login" className="link">
+          <Link to="/sign-in" className="link">
             Sign In
           </Link>
 
-          <Link to="/signup" className="link">
+          <Link to="/sign-up" className="link">
             Sign Up
           </Link>
         </>

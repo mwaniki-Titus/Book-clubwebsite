@@ -27,11 +27,11 @@ const CreateClubs = () => {
   };
 
   return (
-    <div>
+    <div class="form-container">
       <h2>Create a Book Club</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Club Name:</label>
+      <form class="club-form" onSubmit={handleSubmit}>
+        <div class="form-group">
+          <label for="name">Club Name:</label>
           <input
             type="text"
             id="name"
@@ -39,16 +39,16 @@ const CreateClubs = () => {
             onChange={(e) => setClubInfo({ ...clubInfo, name: e.target.value })}
           />
         </div>
-        <div>
-          <label htmlFor="description">Description:</label>
+        <div class="form-group">
+          <label for="description">Description:</label>
           <textarea
             id="description"
             value={clubInfo.description}
             onChange={(e) => setClubInfo({ ...clubInfo, description: e.target.value })}
           />
         </div>
-        <div>
-          <label htmlFor="image">Club Image:</label>
+        <div class="form-group">
+          <label for="image">Club Image:</label>
           <input
             type="file"
             id="image"
@@ -56,12 +56,14 @@ const CreateClubs = () => {
             onChange={handleImageChange}
           />
         </div>
-        {/* Other club-related form fields */}
-        <div>
+        {/* <!-- Other club-related form fields --> */}
+        <div class="form-group">
           <button type="submit">Create Club</button>
         </div>
       </form>
     </div>
+
+
   );
 };
 
