@@ -1,29 +1,32 @@
-
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Login from "./LogIn";
-import "./App.css"
+import "./App.css";
+import { API_BASE_URL } from './config';
 
 function Signup({ onSignup }) {
   const navigate = useNavigate();
   const initialValues = {
     username: "",
+    first_name: "",
+    last_name: "",
     email: "",
-    phone_number: "",
+    password: "",
   };
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required("Username is required"),
+    first_name: Yup.string().required("First name is required"),
+    last_name: Yup.string().required("Last name is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string().required("Password is required"),
-    phone_number: Yup.string().required("Phone number is required"),
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
-    fetch("/signup", {
+    fetch(`${API_BASE_URL}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,16 +37,16 @@ function Signup({ onSignup }) {
         res.json().then((user) => {
           console.log(user);
           if (user.error) {
-            alert("User already exist!");
+            alert("User already exists!");
           } else {
-            alert("Successfully created new user!");
+            alert("Successfully created a new user!");
             onSignup(user);
             navigate("/");
           }
         });
       }
+      setSubmitting(false);
     });
-    setSubmitting(false);
   };
 
   return (
@@ -69,6 +72,40 @@ function Signup({ onSignup }) {
                 />
                 <ErrorMessage
                   name="username"
+                  component="div"
+                  className="error-message"
+                />
+              </div>
+
+              <div className="input-group">
+                <label htmlFor="first_name" className="form-label">
+                  First Name:
+                </label>
+                <Field
+                  type="text"
+                  name="first_name"
+                  className="form-control"
+                  placeholder="First Name"
+                />
+                <ErrorMessage
+                  name="first_name"
+                  component="div"
+                  className="error-message"
+                />
+              </div>
+
+              <div className="input-group">
+                <label htmlFor="last_name" className="form-label">
+                  Last Name:
+                </label>
+                <Field
+                  type="text"
+                  name="last_name"
+                  className="form-control"
+                  placeholder="Last Name"
+                />
+                <ErrorMessage
+                  name="last_name"
                   component="div"
                   className="error-message"
                 />
@@ -107,7 +144,7 @@ function Signup({ onSignup }) {
               <div className="form-message">
                 <p>
                   Already have an account?{" "}
-                  <Link className="login-link" to="/sign-in">
+                  <Link className="login-link" to="/login">
                     Login
                   </Link>
                 </p>
@@ -121,7 +158,6 @@ function Signup({ onSignup }) {
         </Formik>
       </div>
     </div>
-
   );
 }
 

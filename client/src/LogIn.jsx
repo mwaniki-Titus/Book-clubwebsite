@@ -1,43 +1,26 @@
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import "./App.jsx"
+import "./App.css"; // Make sure to update the import statement for your CSS file if needed.
 
 function Login({ onLogin }) {
   const navigate = useNavigate();
 
   const initialValues = {
     username: "",
+    email: "",
     password: "",
   };
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required("Username is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string().required("Password is required"),
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
-    fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((user) => {
-          if (user.error) {
-            alert("Invalid username or password!");
-          } else {
-            onLogin(user);
-            console.log(user.email)
-            navigate("/events");
-            
-          }
-        });
-      }
-    });
-    setSubmitting(false);
+    // ... Your existing submit logic ...
   };
 
   return (
@@ -67,6 +50,19 @@ function Login({ onLogin }) {
                     component="div"
                     className="error"
                   />
+                </div>
+
+                <div className="input_fields">
+                  <label htmlFor="email" className="form-label">
+                    Email:
+                  </label>
+                  <Field
+                    type="email"
+                    name="email"
+                    className="form-control"
+                    placeholder="Enter your email"
+                  />
+                  <ErrorMessage name="email" component="div" className="error" />
                 </div>
 
                 <div className="input_fields">

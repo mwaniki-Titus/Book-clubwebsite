@@ -1,6 +1,7 @@
 {
   "name": "bookclubwebsite",
   "private": true,
+  "proxy": "http://127.0.0.1:5173",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
