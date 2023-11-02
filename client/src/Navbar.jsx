@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navbar({ user, onLogout }) {
+function Navbar({ isAuthenticated, onLogout }) {
   function handleLogout() {
     // Implement the logout functionality here
     // For example, send a request to your server to log the user out
+    onLogout();
   }
 
   return (
@@ -23,7 +24,7 @@ function Navbar({ user, onLogout }) {
         Create Club
       </Link>
 
-      {user ? (
+      {isAuthenticated ? (
         // Display "My Account" and "Logout" when the user is authenticated
         <>
           <Link to="/my-account" className="link">
