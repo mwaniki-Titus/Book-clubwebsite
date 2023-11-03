@@ -1,71 +1,108 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const BookDetails = () => {
   const [book, setBook] = useState(null);
-  const [summary, setSummary] = useState('');
-  const { bookId } = useParams(); // Extracting bookId from the URL params
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { bookid } = useParams();
+  const [summary, setSummary] = useState(''); // Summary should be a string
+  const username = localStorage.getItem('username');
 
   useEffect(() => {
-    // Simulated book details
-    const dummyBook = {
-      bookID: bookId,
-      bookTitle: 'Sample Book Title',
-      author: 'Sample Author',
-      imageURL: 'book-cover.jpg',
-      clubID: 'Sample Club ID',
-      // Add more book details...
-    };
-
-    // Simulating the delay of a network request
     const fetchData = async () => {
-      return new Promise((resolve) => {
-        setTimeout(() => resolve(dummyBook), 1000); // Simulating a delay of 1 second
-      });
+      const token = localStorage.getItem('token');
+      try {
+        if (bookid) {
+          const response = await axios.get(
+            `https://bookclubbackend.onrender.com/book/${bookid}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+              },
+            }
+          );
+
+          if (response.status !== 200) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          setBook(response.data);
+          setLoading(false);
+        }
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
     };
 
-    fetchData().then((data) => {
-      setBook(data);
-    });
-  }, [bookId]);
+    fetchData();
+  }, [bookid]);
 
-  const handleSummaryChange = (e) => {
-    setSummary(e.target.value);
-  };
-
-  const handleAddSummary = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Logic to send the summary to the backend can be added here
-    console.log('Added Summary:', summary);
-    setSummary(''); // Clear the input field after adding the summary
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        'https://bookclubbackend.onrender.com/summaries',
+        {
+          summary: summary,
+          bookID: bookid,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (response.status === 201) {
+        setSummary("")
+        console.log('Summary added successfully');
+      } else {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      
+    } catch (error) {
+      alert('Unable to add summary');
+      console.log(error);
+    }
   };
 
-  if (!book) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
-  return (
-    <div>
-      <Link to="/">Back to Clubs</Link>
-      <h2>{book.bookTitle}</h2>
-      <p>Author: {book.author}</p>
-      <img src={book.imageURL} alt={book.bookTitle} />
-      <p>Book ID: {book.bookID}</p>
-      <p>Club ID: {book.clubID}</p>
-      {/* Display other book details here */}
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
-      <form onSubmit={handleAddSummary}>
-        <label htmlFor="summary">Add Summary:</label>
-        <textarea
-          id="summary"
-          value={summary}
-          onChange={handleSummaryChange}
-          placeholder="Write a summary..."
-        />
+  return (
+    <>
+    {book.map((item) =>(
+      <div key={item.bookID}>
+        <h1>{item.bookTitle}</h1>
+        <p>{item.bookauthor} </p>
+        <img src={item.bookImageURL} alt={item.bookTitle} />
+        <h1>SUMMARY:</h1>
+        {item.reviews.map((review,index)=>(
+           <div key={review.summaryID}>
+            <p>{review[index].summary}</p>
+           </div>
+        ))}
+      </div>
+    ))}
+      <form onSubmit={handleSubmit}>
+        <label>
+          Summary:
+          <textarea value={summary} onChange={(e) => setSummary(e.target.value)} />
+        </label>
         <button type="submit">Add Summary</button>
       </form>
-      {/* Display book summaries here */}
-    </div>
+    </>
   );
 };
 

@@ -9,6 +9,7 @@ import ClubSection from './ClubSection';
 import Profile from './Profile';
 import LogIn from './LogIn'; // Create SignIn component
 import SignUp from './SignUp'; // Create SignUp component
+import BookDetails from './BookDetails';
 
 
 const App = () => {
@@ -49,6 +50,7 @@ const App = () => {
         <Route path="/login" element={isAuthenticated ? (<Navigate to="/" />) : (<LogIn onLogin={handleLogin} />)}/>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/clubs/:clubId" element={<ClubSection/>}/>
+        <Route path="/book/:bookid" element={<BookDetails/>}/>
       </Routes>
     </>
   );
