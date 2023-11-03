@@ -42,7 +42,7 @@ const ClubDisplay = () => {
       <input type="text" placeholder="Search club" />
       <p>Welcome to our book club community, where every page holds a new adventure. Join us in exploring the literary world, sharing stories, and forging friendships. Together, we'll uncover the magic of books. Begin your literary journey here!</p>
       {data.map(club => (
-        <Link to={`/books/${club.clubID}`}>
+        <Link to={`/clubs/${club.clubID}`}>
           <div key={club.clubID}>
           <h2>{club.clubName}</h2>
           <p>Description: {club.description}</p>

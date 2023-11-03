@@ -5,6 +5,7 @@ import { useState,useEffect } from 'react';
 import About from './About';
 import Navbar from './Navbar';
 import CreateClub from './CreateClub';
+import ClubSection from './ClubSection';
 import Profile from './Profile';
 import LogIn from './LogIn'; // Create SignIn component
 import SignUp from './SignUp'; // Create SignUp component
@@ -47,6 +48,7 @@ const App = () => {
         <Route path="/about" element={<About />}/>
         <Route path="/login" element={isAuthenticated ? (<Navigate to="/" />) : (<LogIn onLogin={handleLogin} />)}/>
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/clubs/:clubId" element={<ClubSection/>}/>
       </Routes>
     </>
   );
