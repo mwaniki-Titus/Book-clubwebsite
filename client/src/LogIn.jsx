@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState} from "react";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -27,17 +27,13 @@ function Login() {
             username:"",
             password: ""
            })
-           
             navigate("/")
-
-          console.log(response.data); 
+            let res = response.data.access_token
+         localStorage.setItem('token', res ); // Store the token in localStorage
         } catch (error) {
           alert("User not found")
          console.error(error);
-        }
-        
-          
-
+        } 
       };
       
   

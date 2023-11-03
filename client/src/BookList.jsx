@@ -1,36 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
+import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
+
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
+  const { clubId } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulating fetching book data from an API (replace this once you have the actual backend)
-    const dummyData = [
-      {
-        bookID: 1,
-        title: 'Book One',
-        author: 'Author A',
-        summary: 'A great book to read!',
-        coverImage: 'book-cover-one.jpg',
-        reviews: [] // Initially, the reviews array is empty for each book
-      },
-      // Add more dummy data here...
-    ];
-    setBooks(dummyData);
-  }, []);
+    fetch(`https://bookclubbackend.onrender.com/clubs/${clubId}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setBooks(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, [clubId]);
+
+
 
   const handleJoinClub = () => {
     // Logic to join the club can be added here, like making an API call or updating the state
     console.log('Joining the club');
   };
 
+  
   const handleAddReview = (bookID, reviewText) => {
-    const updatedBooks = books.map(book => {
+    const updatedBooks = books.map((book) => {
       if (book.bookID === bookID) {
         return {
           ...book,
-          reviews: [...book.reviews, reviewText]
+          reviews: [...book.reviews, reviewText],
         };
       }
       return book;
@@ -41,32 +49,18 @@ const BookList = () => {
   return (
     <div>
       <h1>Books Read in this Club</h1>
-      {books.map(book => (
-        <div key={book.bookID}>
-          <img src={book.coverImage} alt={book.title} />
-          <h2>{book.title}</h2>
-          <p>Author: {book.author}</p>
-          <p>Summary: {book.summary}</p>
-          <Link to={`/book/${book.bookID}`}>View Details</Link>
-          <div>
-            <p>
-              {book.reviews && book.reviews.length > 0
-                ? `Reviews (${book.reviews.length})`
-                : 'No reviews yet'}
-            </p>
-            <ul>
-              {book.reviews &&
-                book.reviews.map((review, index) => (
-                  <li key={index}>{review}</li>
-                ))}
-            </ul>
-            <ReviewForm bookID={book.bookID} onAddReview={handleAddReview} />
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        books.map((book) => (
+          <div key={book.bookID}>
+            {/* Book details rendering code */}
           </div>
-        </div>
-      ))}
+        ))
+      )}
       <div>
         <p>
-          Joining a book club is not just about reading books; it's about expanding your horizons, making new friends, and discovering the magic that happens when people come together to explore the world one page at a time.
+          Joining a book club is not just about reading books; it's about expanding your horizons, making new friends, and discovering the world of literature.
         </p>
         <button onClick={handleJoinClub}>Join Club</button>
       </div>
@@ -90,5 +84,8 @@ const ReviewForm = ({ bookID, onAddReview }) => {
     </form>
   );
 };
+
+
+
 
 export default BookList;
