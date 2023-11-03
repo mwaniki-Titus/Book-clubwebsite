@@ -1,11 +1,12 @@
 import React, { useState} from "react";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
+import swal from 'sweetalert';
 
 
 
 
-function Login() {
+function Login({onLogin}) {
     const [data,setData]= useState({
       email: "",
       username:"",
@@ -21,12 +22,17 @@ function Login() {
         
         try {
           const response = await axios.post("https://bookclubbackend.onrender.com/userlogin",data);
-          alert("Welcome back")
           setData({
             email: "",
             username:"",
             password: ""
            })
+           onLogin()
+            swal({
+              title: 'Success',
+              text: 'Logged in successfully',
+              icon: 'success',
+          });
             navigate("/")
             let res = response.data.access_token
          localStorage.setItem('token', res ); // Store the token in localStorage
