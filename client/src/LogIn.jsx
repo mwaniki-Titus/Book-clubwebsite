@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 import swal from 'sweetalert';
+import Navbar from "./Navbar";
 
 
 
@@ -47,6 +48,7 @@ function Login({onLogin}) {
   
     return (
         <div className="sign-in-container">
+          <Navbar/>
         <form onSubmit={signIn}>
             <h1>Log In to your Account</h1>
             <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setData({...data, email: e.target.value})}></input>

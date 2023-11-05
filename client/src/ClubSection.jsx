@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 const ClubSection = () => {
     const[club,setClub]=useState([])
@@ -49,6 +50,7 @@ useEffect(() => {
 
     return (
         <>
+        <Navbar/>
         {Array.isArray(club)
        ? club.map((item) => (
            <div key={item.clubID}>

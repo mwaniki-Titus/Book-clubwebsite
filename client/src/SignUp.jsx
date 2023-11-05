@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import {Link, useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 
 const Register = () => {
@@ -48,6 +49,7 @@ const Register = () => {
 
     return (
         <div className="sign-in-container">
+            <Navbar/>
             <form onSubmit={signUp}>
                 <h1>Create Account</h1>
                 <input type="text" placeholder="Enter your first name.." value={first_name} onChange={(e) =>setFormData({ ...formData, first_name: e.target.value })}/>

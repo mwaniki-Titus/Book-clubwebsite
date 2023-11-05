@@ -1,20 +1,21 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import "./App.css"
+import { Route, Routes,Navigate} from 'react-router-dom';
 import ClubDisplay from "./ClubDisplay"
-import { useState,useEffect } from 'react';
+
+import LogIn from './LogIn';
+import Landing from './Landing'
 import About from './About';
-import Navbar from './Navbar';
 import CreateClub from './CreateClub';
 import ClubSection from './ClubSection';
+import { useState,useEffect } from 'react';
 import Profile from './Profile';
-import LogIn from './LogIn'; // Create SignIn component
+
 import SignUp from './SignUp'; // Create SignUp component
 import BookDetails from './BookDetails';
 
-
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   useEffect(() => {
     // Check if the user is already authenticated by reading from localStorage
     const storedAuthStatus = localStorage.getItem('isAuthenticated');
@@ -22,14 +23,12 @@ const App = () => {
       setIsAuthenticated(true);
     }
   }, []);
-
   const handleLogin = () => {
     // Simulate a successful login
     setIsAuthenticated(true);
     // Store the authentication status in localStorage
     localStorage.setItem('isAuthenticated', 'true');
   };
-
   const handleLogout = () => {
     // Simulate a logout
     setIsAuthenticated(false);
@@ -37,21 +36,19 @@ const App = () => {
     localStorage.removeItem('isAuthenticated');
   };
 
-  
-
   return (
     <>
-      <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-      <Routes>
-        <Route path="/" element={isAuthenticated ? <ClubDisplay /> : <Navigate to="/login" />}/>
-        <Route path="/create-club" element={isAuthenticated ? ( <CreateClub />) : (<Navigate to="/login" />)}/>
-        <Route path="/profile" element={isAuthenticated ? (<Profile />) : (<Navigate to="/login" />)}/>
-        <Route path="/about" element={<About />}/>
-        <Route path="/login" element={isAuthenticated ? (<Navigate to="/" />) : (<LogIn onLogin={handleLogin} />)}/>
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/clubs/:clubId" element={<ClubSection/>}/>
-        <Route path="/book/:bookid" element={<BookDetails/>}/>
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Landing/>}/>
+      <Route path="/home" element={isAuthenticated ? <ClubDisplay /> : <Navigate to="/login" />}/>
+      <Route path="/create-club" element={isAuthenticated ? ( <CreateClub />) : (<Navigate to="/login" />)}/>
+      <Route path="/profile" element={isAuthenticated ? (<Profile />) : (<Navigate to="/login" />)}/>
+      <Route path="/about" element={<About />}/>
+      <Route path="/login" element={isAuthenticated ? (<Navigate to="/home" />) : (<LogIn onLogin={handleLogin} />)}/>
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/clubs/:clubId" element={<ClubSection/>}/>
+      <Route path="/book/:bookid" element={<BookDetails/>}/>
+     </Routes>  
     </>
   );
 };
