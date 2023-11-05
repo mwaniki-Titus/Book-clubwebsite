@@ -37,6 +37,7 @@ function Login({onLogin}) {
             let res = response.data.access_token
          localStorage.setItem('token', res ); // Store the token in localStorage
          localStorage.setItem("name", username)
+         localStorage.setItem("userID",response.data.userid )
         } catch (error) {
           alert("User not found")
          console.error(error);

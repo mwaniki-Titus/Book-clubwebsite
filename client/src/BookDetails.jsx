@@ -7,11 +7,19 @@ const BookDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { bookid } = useParams();
-  const [summary, setSummary] = useState(''); // Summary should be a string
-  const username = localStorage.getItem('username');
+  const userid = localStorage.getItem('userID')
+  const [personsummary, setpersonSummary] = useState({
+        summary:"",
+        bookID:"",
+        userID:""
+  }); 
+  
 
+
+  const {summary,bookID,userID}= personsummary
   useEffect(() => {
     const fetchData = async () => {
+      setpersonSummary({ ...personsummary, bookID: bookid });
       const token = localStorage.getItem('token');
       try {
         if (bookid) {
@@ -41,27 +49,21 @@ const BookDetails = () => {
     fetchData();
   }, [bookid]);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setpersonSummary({...personsummary,bookID:bookid})
       const token = localStorage.getItem('token');
+      setpersonSummary({...personsummary,userID:userid})
+      console.log(personsummary)
       const response = await axios.post(
-        'https://bookclubbackend.onrender.com/summaries',
-        {
-          summary: summary,
-          bookID: bookid,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+        'https://bookclubbackend.onrender.com/summaries',personsummary,);
 
       if (response.status === 201) {
-        setSummary("")
-        console.log('Summary added successfully');
+    
+        alert('Summary added successfully');
+        location.reload();
       } else {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -79,6 +81,7 @@ const BookDetails = () => {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
+
 
   return (
     <>
@@ -98,7 +101,7 @@ const BookDetails = () => {
       <form onSubmit={handleSubmit}>
         <label>
           Summary:
-          <textarea value={summary} onChange={(e) => setSummary(e.target.value)} />
+          <textarea value={summary} onChange={(e) => setpersonSummary({ ...personsummary, summary: e.target.value })} />
         </label>
         <button type="submit">Add Summary</button>
       </form>
