@@ -85,3 +85,154 @@
 @media screen {
     
 }
+.navbar {
+  background-color: #333;
+  color: #fff; 
+  padding: 10px; 
+}
+
+.navbar a {
+  color: #fff; 
+  text-decoration: none; 
+  margin-right: 10px;
+}
+
+
+.navbar a:hover {
+  text-decoration: underline; 
+}
+
+
+.login-button {
+  background-color: #007bff; 
+  color: #fff; 
+  padding: 8px 16px;
+  border: none; 
+  cursor: pointer;
+}
+
+
+.login-button:hover {
+  background-color: #1b1b1d; 
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-label {
+  font-weight: bold;
+}
+
+.login-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.sign-in-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sign-in-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sign-in-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sign-in-container input {
+  padding: 10px;
+  border: 1px solid #1b7439;
+  border-radius: 5px;
+}
+
+.sign-in-container button {
+  background-color: #202224;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sign-in-container button:hover {
+  background-color: #0056b3;
+}
+
+.sign-in-container button a {
+  text-decoration: none;
+  color: #007bff;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.sign-in-container button a:hover {
+  text-decoration: underline;
+}
+/* Navbar.css */
+nav {
+  background-color: #191b1d; 
+  color: #fff; 
+  padding: 10px 0; 
+}
+
+ul {
+  list-style: none; 
+  padding: 0;
+  display: flex; 
+  justify-content: center; 
+}
+
+li {
+  margin: 0 10px; 
+}
+
+a {
+  text-decoration: none;
+  color: #fff; 
+}
+
+a:hover {
+  text-decoration: underline;
+}
