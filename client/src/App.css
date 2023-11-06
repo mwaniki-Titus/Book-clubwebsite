@@ -236,3 +236,72 @@ a {
 a:hover {
   text-decoration: underline;
 }
+/* Add this CSS to style your ClubDisplay component */
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.heading {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+searchInput {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.description {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.clubCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.clubCardLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.clubCard {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  width: 300px;
+  margin: 10px;
+}
+
+.clubCardTitle {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.clubCardDescription {
+  font-size: 14px;
+  color: #777;
+  margin: 5px 0;
+}
+
+.clubCardImage {
+  max-width: 100%;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.clubCardInfo {
+  font-size: 12px;
+  color: #888;
+  margin: 10px 0;
+}
+
