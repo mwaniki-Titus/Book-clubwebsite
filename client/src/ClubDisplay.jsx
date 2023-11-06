@@ -7,10 +7,14 @@ import Navbar from './Navbar';
 
 
 const ClubDisplay = () => {
+
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const [name, setName] = useState('');
 
   useEffect(() => {
+    const storedName = localStorage.getItem("name");
+    setName(storedName);
     const fetchData = async () => {
       const token = localStorage.getItem('token');
       
@@ -38,22 +42,37 @@ const ClubDisplay = () => {
   }, []);
 
   return (
-    <div>
+    <div className='Home'>
       <Navbar/>
-      <h1>Welcome to the Book Clubs!</h1>
-      <input type="text" placeholder="Search club" />
-      <p>Welcome to our book club community, where every page holds a new adventure. Join us in exploring the literary world, sharing stories, and forging friendships. Together, we'll uncover the magic of books. Begin your literary journey here!</p>
+      <div className='firstDiv'>
+        <div>
+      <h1 className='welcome'>Welcome Back!</h1>
+      <div className='div'></div>
+      </div>
+      <div>
+      <h1 className='username'>{name}</h1>
+      <div className='div'></div>
+      </div>
+      </div>
+      <div className='secondDiv'>
+      <input type="text" placeholder="Search club" className='searchComponent'/>
+      <p className='description'>Welcome to our book club community, where every page holds a new adventure. Join us in exploring the literary world, sharing stories, and forging friendships. Together, we'll uncover the magic of books. Begin your literary journey here!</p>
+      </div>
+      <div className="clubs-container">
       {data.map(club => (
-        <Link to={`/clubs/${club.clubID}`}>
-          <div key={club.clubID}>
+          <div className='club' key={club.clubID}>
+            <div className="club-info">
+            <Link to={`/clubs/${club.clubID}`}>
           <h2>{club.clubName}</h2>
-          <p>Description: {club.description}</p>
+          </Link>
+          <p> {club.description}</p>
           <img src={club.imageLink} alt={club.clubName} />
           <p>Location: {club.location}</p>
           <p>Date Founded: {club.dateFounded}</p>
+         </div>
           </div>
-        </Link>
       ))}
+      </div>
     </div>
   );
 };
