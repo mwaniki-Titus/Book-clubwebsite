@@ -1,0 +1,126 @@
+/*Club Section*/
+.sectionIntro{
+    display: flex;
+
+
+}
+.first{
+    background-color: #3DB7A2;
+    height:3px;
+}
+.sectionIntro .second{
+    background-color: #092225;
+    height: 47rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sectionIntro img{
+    width:50%;
+}
+.second h1{
+    font-size: 5rem;
+    color: #3DB7A2;
+    width:30%;
+    margin-top: 10rem;
+}
+.second button{
+    color:#3DB7A2;
+    width:20%;
+    height: 2rem;
+}
+
+
+.clubSection .description{
+    padding: 6rem;
+}
+.clubSection .clubName{
+    text-align: center;
+    color: #3DB7A2;
+    font-size: 50px;
+    margin-bottom: 0;
+ }
+ .clubSection .clubLocation{
+   text-align: center;
+   font-size: 30px;
+ }
+ 
+ 
+ .clubSection h3{
+   font-size: 25px;
+   margin-bottom: 0;
+   padding-left: 2rem;
+ }
+ 
+ .clubSection .div{
+   height:5px;
+   background-color: #3DB7A2;
+   margin-left: 30px;
+   width:25%
+ }
+ 
+ 
+ .Books{
+   margin-top: 2rem;
+   display: flex;
+   width:90%;
+   background: #092225; 
+   border-radius: 50px; 
+   margin-left: 6rem;
+   align-items: center;
+ }
+ 
+ .Books h1 ,h4{
+   text-align: center;
+   color: #3DB7A2;
+   margin-bottom: 0;
+ }
+ .Books h5{
+    color: #3DB7A2;
+    width:70%;
+    margin-left: 6rem;
+ }
+ 
+ .Books img{
+   width: 50%;
+   margin-left: 3rem;
+   padding-bottom: 10px;
+   padding-top: 10px;
+ }
+
+
+ .bookreviewSection{
+    display: flex;
+ }
+
+ .bookreviewSection .reviews{
+    width:30%;
+    background-color: #092225;
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+ .bookreviewSection .reviews textarea{
+       border-radius: 10px;
+       width:60%;
+       height:4rem;
+       margin-bottom: 20px;
+ }
+ .bookreviewSection .reviews button{
+    border: 1px solid #3DB7A2;
+    border-radius: 15px;
+    height:40px;
+ }
+ .bookreviewSection .reviews h1{
+    color: #3DB7A2;
+ }
+ .bookreviewSection .books{
+    border-radius: 15px;
+    background-color: rgb(232, 232, 232);
+    width: 68%;
+    margin-left: 18px;
+    display: flex;
+    flex-direction: column;
+ }

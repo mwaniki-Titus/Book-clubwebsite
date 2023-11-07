@@ -1,0 +1,28 @@
+
+.flexDiv{
+    display: flex;
+    margin-top: 3px;
+}
+.sectionOne{
+width:50%;
+}
+.bookfirst .all1{
+    background-color:#092225;
+    padding: 5rem;
+    border:1px solid white;
+    display: flex;
+}
+.bookfirst .all1 img{
+    width:30%;
+}
+.bookfirst h1{
+    color: #3DB7A2;
+    font-size: 4em;
+}
+.bookfirst p{
+    color: #3DB7A2;
+    font-size: 2em;
+}
+.sectionTwo{
+flex-grow: 1;
+}
