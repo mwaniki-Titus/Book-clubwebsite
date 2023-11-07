@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from './Navbar';
+import './BookDetails.css'
 
 const BookDetails = () => {
   const [book, setBook] = useState(null);
@@ -86,26 +88,55 @@ const BookDetails = () => {
 
   return (
     <>
+    <Navbar/>
+    <div className='parentDiv'>
+    <div className="bookDetails">
+   <div className='firstDiv'>
     {book.map((item) =>(
-      <div key={item.bookID}>
+      <div  className="bookDiv" key={item.bookID}>
+        <div className='book1'>
+        <div className='title'>
         <h1>{item.bookTitle}</h1>
+        </div>
+        <img src="https://images.pexels.com/photos/2736542/pexels-photo-2736542.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+        <h2>Book Lovers Group</h2>
+        <div className='underline1'></div>
+        <div className='nav'>
+        <p>Summary</p>
         <p>{item.bookauthor} </p>
-        <img src={item.bookImageURL} alt={item.bookTitle} />
-        <h1>SUMMARY:</h1>
+        <p>Files</p>
+        <p>Members</p>
+        <p>About</p>
+        </div>
+        <div className='underline2'></div>
+       </div>
+       <div className='summaryDiv'>
+        <div className='summaryDiv1'>
+        <form className="secondDiv" onSubmit={handleSubmit}>
+          <h2>Add a summary to the club of the book</h2>
+           <label>
+           <textarea value={summary} onChange={(e) => setpersonSummary({ ...personsummary, summary: e.target.value })} />
+           </label>
+           <button type="submit">Add Summary</button>
+         </form>
         {item.reviews.map((review,index)=>(
-           <div key={review.summaryID}>
+           <div className="reviewDiv"key={review.summaryID}>
             <p>{review[index].summary}</p>
-           </div>
+          </div>
         ))}
+        </div>
+        <div className='summaryDiv2'>
+          <h5>{item.bookSynopsis}</h5>
+          <h5>Welcome to the group! A space for us to connect and share with each other.Start by posting your thoughts.</h5>
+          </div>
+        </div>
       </div>
     ))}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Summary:
-          <textarea value={summary} onChange={(e) => setpersonSummary({ ...personsummary, summary: e.target.value })} />
-        </label>
-        <button type="submit">Add Summary</button>
-      </form>
+    </div>
+    <div>
+      </div>
+      </div>
+      </div>
     </>
   );
 };

@@ -1,28 +1,100 @@
+.bookDetails{
+    width:60%;
+    margin-left: 20%;
+    background-color: white;
+    height: 50rem;
+}
 
-.flexDiv{
-    display: flex;
-    margin-top: 3px;
+.parentDiv{
+    background-image: url("https://images.pexels.com/photos/3060324/pexels-photo-3060324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: scroll;
+    height: 50rem;
 }
-.sectionOne{
-width:50%;
+.firstDiv{
+    background-color: #092225;
 }
-.bookfirst .all1{
-    background-color:#092225;
-    padding: 5rem;
-    border:1px solid white;
-    display: flex;
-}
-.bookfirst .all1 img{
-    width:30%;
-}
-.bookfirst h1{
+
+.title{
+    background-color: #092225;
+    padding: 2px;
     color: #3DB7A2;
-    font-size: 4em;
+    font-size: 20px;
 }
-.bookfirst p{
+.book1 img{
+    width:100%;
+    height: 25rem;
+}
+.book1 h2{
+    font-family: 'Lato', sans-serif;
+    color:white;
+    line-height: 0;
+    padding: 30px;
+    background-color: #092225;
+}
+.underline1{
+    background-color: #3DB7A2;
+    height: 3px;
+    width:100%;
+    line-height: 0;
+}
+.underline2{
+    background-color: #3DB7A2;
+    height: 3px;
+    width:100%;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:50%;
+    color:white;
+}
+.summaryDiv p{
+    font-size: 15px;
+    border:1px solid #3DB7A2;
+    width:180%;
+    padding: 10px;
+    color:#092225;
+    margin: 10px;
+}
+.summaryDiv h5{
+  border:1px solid #3DB7A2;
+  width:59%;
+  padding:70px;
+  color:#092225;
+  margin-left: 3%;
+}
+
+.summaryDiv{
+    display: flex;
+    background-color: white;
+    overflow-x: hidden;
+}
+.reviewDiv{
+    display: flex;
+    
+}
+.secondDiv textarea{
+  border: 1px solid #3DB7A2;
+  width:100%;
+}
+.summaryDiv .summaryDiv1{
+    width:50%;
+    
+}
+.summaryDiv1 h2{
     color: #3DB7A2;
-    font-size: 2em;
 }
-.sectionTwo{
-flex-grow: 1;
+
+.secondDiv{
+    border: 1px solid #3DB7A2;
+    padding: 30px;
+    margin: 13px;
+}
+
+.secondDiv button{
+  margin-top: 1rem;
+  width:8rem;
 }
