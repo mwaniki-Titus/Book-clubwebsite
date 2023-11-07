@@ -160,59 +160,69 @@
   background-color: #0056b3;
 }
 
+.sign-in-parent{
+  margin-top: 10px;
+  background-color: #092225;
+  display: flex;
+}
+
 .sign-in-container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
 }
 
 .sign-in-container h1 {
-  font-size: 24px;
+  font-size: 3rem;
   margin-bottom: 20px;
+  color: #3DB7A2;
+  line-height: 0;
+}
+.sign-in-container p{
+  color: #3DB7A2;
+  width:40%;
 }
 
 .sign-in-container form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width:50%;
 }
 
 .sign-in-container input {
   padding: 10px;
-  border: 1px solid #1b7439;
+  border: 3px solid white;
   border-radius: 5px;
+  background-color: #092225;
 }
 
 .sign-in-container button {
-  background-color: #202224;
-  color: #fff;
+  background-color:white;
+  color:#3DB7A2;
   padding: 10px;
-  border: none;
+  margin-top: 1rem;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .sign-in-container button:hover {
-  background-color: #0056b3;
+  background-color:#3DB7A2;
+  color: #092225;
 }
 
 .sign-in-container button a {
-  text-decoration: none;
-  color: #007bff;
+  color:#092225;
   text-align: center;
   margin-top: 10px;
 }
 
-.sign-in-container button a:hover {
-  text-decoration: underline;
-}
+
 /* Navbar.css */
 nav {
-  background-color: #191b1d; 
+  background-color:#092225; 
   color: #fff; 
   padding: 10px 0; 
 }
