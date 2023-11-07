@@ -19,9 +19,9 @@ const BookDetails = () => {
   const {summary,bookID,userID}= personsummary
   useEffect(() => {
     const fetchData = async () => {
-      setpersonSummary({ ...personsummary, bookID: bookid });
       const token = localStorage.getItem('token');
       try {
+        setpersonSummary({...personsummary,userID:userid})
         if (bookid) {
           const response = await axios.get(
             `https://bookclubbackend.onrender.com/book/${bookid}`,
@@ -39,6 +39,7 @@ const BookDetails = () => {
 
           setBook(response.data);
           setLoading(false);
+          
         }
       } catch (error) {
         setError(error);
@@ -51,12 +52,12 @@ const BookDetails = () => {
 
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     try {
-      setpersonSummary({...personsummary,bookID:bookid})
       const token = localStorage.getItem('token');
-      setpersonSummary({...personsummary,userID:userid})
       console.log(personsummary)
+      setpersonSummary({ ...personsummary, bookID: bookid });
       const response = await axios.post(
         'https://bookclubbackend.onrender.com/summaries',personsummary,);
 

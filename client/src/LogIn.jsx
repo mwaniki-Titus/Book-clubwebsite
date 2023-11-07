@@ -33,7 +33,7 @@ function Login({onLogin}) {
               title: 'Success',
               text: 'Logged in successfully',
               icon: 'success',
-          });
+            });
             navigate("/")
             let res = response.data.access_token
          localStorage.setItem('token', res ); // Store the token in localStorage

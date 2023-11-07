@@ -1,61 +1,7 @@
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
-const containerStyle = {
-  maxWidth: '400px',
-  margin: '0 auto',
-  padding: '20px',
-  backgroundColor: '#ede6f5', 
-  border: '1px solid #e0e0e0',
-  borderRadius: '8px',
-  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  
-};
-
-const labelStyle = {
-  display: 'block',
-  fontWeight: 'bold',
-  marginBottom: '8px',
-  color: '#333',
-};
-
-const inputStyle = {
-  width: '100%',
-  padding: '8px',
-  marginBottom: '16px',
-  border: '1px solid #ccc',
-  borderRadius: '4px',
-  transition: 'border-color 0.3s',
-  fontSize: '14px',
-};
-
-const inputHoverStyle = {
-  ...inputStyle,
-  borderColor: '#007bff',
-};
-
-const dateInputStyle = {
-  width: '100%',
-};
-
-const buttonStyle = {
-  backgroundColor: '#007bff', // Blue button
-  color: '#fff',
-  border: 'none',
-  borderRadius: '4px',
-  padding: '10px 20px',
-  cursor: 'pointer',
-  transition: 'background-color 0.3s',
-  fontSize: '16px',
-};
-
-const buttonHoverStyle = {
-  ...buttonStyle,
-  backgroundColor: '#0056b3',
-  transform: 'scale(1.05)',
-};
 
 const CreateClub = () => {
   const [formData, setFormData] = useState({
@@ -70,12 +16,24 @@ const CreateClub = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://bookclubbackend.onrender.com/userlogin", formData);
+      const token = localStorage.getItem("token")
+      const response = await axios.post("https://bookclubbackend.onrender.com/createClub", formData,
+      {headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }},);
       // Rest of your code for handling the response
+      swal({
+        title: 'Success',
+        text: 'Club created successfully',
+        icon: 'success',
+      });
+      navigate("/home")
     } catch (error) {
       alert("Check credentials");
       console.error(error);
@@ -83,11 +41,10 @@ const CreateClub = () => {
   };
 
   return (
-    <div style={containerStyle}>
+    <div >
       <form onSubmit={handleSubmit}>
-        <label style={labelStyle} htmlFor="nameOfClub">Name of Club:</label>
+        <label  htmlFor="nameOfClub">Name of Club:</label>
         <input
-          style={inputStyle}
           type="text"
           id="nameOfClub"
           name="nameOfClub"
@@ -95,18 +52,16 @@ const CreateClub = () => {
           onChange={handleChange}
         />
 
-        <label style={labelStyle} htmlFor="description">Description:</label>
+        <label htmlFor="description">Description:</label>
         <textarea
-          style={inputStyle}
           id="description"
           name="description"
           value={formData.description}
           onChange={handleChange}
         />
 
-        <label style={labelStyle} htmlFor="imageURL">Image URL:</label>
+        <label htmlFor="imageURL">Image URL:</label>
         <input
-          style={inputStyle}
           type="text"
           id="imageURL"
           name="imageURL"
@@ -114,9 +69,8 @@ const CreateClub = () => {
           onChange={handleChange}
         />
 
-        <label style={labelStyle} htmlFor="location">Location:</label>
+        <label htmlFor="location">Location:</label>
         <input
-          style={inputStyle}
           type="text"
           id="location"
           name="location"
@@ -124,9 +78,8 @@ const CreateClub = () => {
           onChange={handleChange}
         />
 
-        <label style={labelStyle} htmlFor="dateFounded">Date Founded:</label>
+        <label htmlFor="dateFounded">Date Founded:</label>
         <input
-          style={dateInputStyle}
           type="date"
           id="dateFounded"
           name="dateFounded"
@@ -134,7 +87,7 @@ const CreateClub = () => {
           onChange={handleChange}
         />
 
-        <button style={buttonStyle} type="submit">Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
    
