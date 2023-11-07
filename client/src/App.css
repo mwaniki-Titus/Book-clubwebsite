@@ -198,6 +198,7 @@
   border: 3px solid white;
   border-radius: 5px;
   background-color: #092225;
+  color: white;
 }
 
 .sign-in-container button {
@@ -249,6 +250,28 @@ a {
 a:hover {
   text-decoration: underline;
 }
+/*About page styling*/
+.aboutDiv{
+  display: flex;
+  margin-top: 3px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #092225;
+}
+.aboutDiv h1{
+  color: #3DB7A2;
+  font-size: 2rem;
+  margin-top: 7rem;
+}
+.aboutDiv p{
+  color: white;
+  width:40%;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+
 /* Add this CSS to style your ClubDisplay component */
 .container {
   text-align: center;

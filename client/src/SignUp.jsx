@@ -30,7 +30,11 @@ const Register = () => {
         }
           
         
-        alert("User created")
+        swal({
+            title: 'Success',
+            text: 'User created successfully',
+            icon: 'success',
+          });
         
         
         // Clear the form inputs after submission

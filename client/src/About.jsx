@@ -1,9 +1,11 @@
+import Carousel from "./Carousel";
 import Navbar from "./Navbar";
 
 const About =()=>{
     return(
-        <div>
+        <>
             <Navbar/>
+            <div className="aboutDiv">
             <h1>About</h1>
             <p>
         Welcome to our book club community! We are dedicated to the world of
@@ -13,15 +15,12 @@ const About =()=>{
         the power to inspire, educate, and entertain, and we aim to foster a
         community that celebrates the magic of books.
       </p>
-      <h2>Our History</h2>
       <p>
-        Founded in [2023], our book club has grown from a small group of
-        enthusiasts to a thriving community of [5] members. Over the years,
-        we have explored a wide range of genres, engaged in thought-provoking
-        discussions, and created countless memories. Our journey is a testament
-        to the enduring love for books and the connections they forge.
+      It all started with a group of friends who developed a common passion and subsequently got together with increasing frequency to enjoy this shared interest.Founded in 2000 and based in San Francisco, our Book Club is a devoted community made up of enthusiastic individuals who enjoy sharing ideas and activities. You`re welcome to browse our site to learn more, and if what we`re doing resonates with you, please don`t hesitate to get in touch.
       </p>
-        </div>
+      <Carousel/>
+      </div>
+        </>
     )
 }
 
