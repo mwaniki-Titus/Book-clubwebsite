@@ -47,18 +47,23 @@ function Login({onLogin}) {
       
   
     return (
+      <>
+      <Navbar/>
+      <div className="sign-in-parent">
         <div className="sign-in-container">
-          <Navbar/>
+        <h1 >Log In</h1>
+        <p>Don't Be left out join and catch up from where you left it from</p>
         <form onSubmit={signIn}>
-            <h1>Log In to your Account</h1>
             <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setData({...data, email: e.target.value})}></input>
             <input type="text" placeholder="Enter your username" value={username} onChange={(e) => setData({...data, username:e.target.value})}></input>
             <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setData({...data, password:e.target.value})}></input>
             <button type="submit">Log In</button>
         </form>
         <button><Link to="/signup">Don't have an account</Link></button>
-
     </div>
+    <img src="https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+    </div>
+    </>
     )
   }
   

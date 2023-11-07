@@ -164,6 +164,7 @@
   margin-top: 10px;
   background-color: #092225;
   display: flex;
+  height: 50rem;;
 }
 
 .sign-in-container {
@@ -218,7 +219,9 @@
   text-align: center;
   margin-top: 10px;
 }
-
+.sign-in-parent img{
+   width:60%;
+}
 
 /* Navbar.css */
 nav {
