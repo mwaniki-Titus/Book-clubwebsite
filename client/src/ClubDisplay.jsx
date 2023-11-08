@@ -22,8 +22,6 @@ const ClubDisplay = () => {
         navigate('/login');
         return; // Prevent further API requests if not authenticated
       }
-      console.log(token);
-    
       try {
         const response = await axios.get('https://bookclubbackend.onrender.com/clubs', {
           headers: {
@@ -32,7 +30,6 @@ const ClubDisplay = () => {
           },
         });
         setData(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error('Error:', error);
       }

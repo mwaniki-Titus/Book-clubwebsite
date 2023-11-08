@@ -16,6 +16,7 @@ import BookDetails from './BookDetails';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const[joined,setJoined]=useState(false)
   useEffect(() => {
     // Check if the user is already authenticated by reading from localStorage
     const storedAuthStatus = localStorage.getItem('isAuthenticated');
@@ -23,12 +24,20 @@ const App = () => {
       setIsAuthenticated(true);
     }
   }, []);
+
+  const changeJoin=()=>{
+    setJoined(true)
+  }
+
+
   const handleLogin = () => {
     // Simulate a successful login
     setIsAuthenticated(true);
     // Store the authentication status in localStorage
     localStorage.setItem('isAuthenticated', 'true');
   };
+
+
   const handleLogout = () => {
     // Simulate a logout
     setIsAuthenticated(false);
@@ -46,8 +55,8 @@ const App = () => {
       <Route path="/about" element={<About />}/>
       <Route path="/login" element={isAuthenticated ? (<Navigate to="/home" />) : (<LogIn onLogin={handleLogin} />)}/>
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/clubs/:clubId" element={<ClubSection/>}/>
-      <Route path="/book/:bookid" element={<BookDetails/>}/>
+      <Route path="/clubs/:clubId" element={<ClubSection changeJoin={changeJoin}/>}/>
+      <Route path="/book/:bookid" element={joined ? (<BookDetails />) : ( <Navigate to='/home' />)} />
      </Routes>  
     </>
   );

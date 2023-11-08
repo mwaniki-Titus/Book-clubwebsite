@@ -1,1 +1,124 @@
-/*Club Section*/
+/* ClubSection.css */
+.club-section-container {
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    background-color: #092225;
+  }
+  .club-section-container .elementOne{
+    background-image: url("https://images.pexels.com/photos/723997/pexels-photo-723997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 8%;
+  }
+  .club-section-container .elementOne img{
+    width:90%;
+  }
+  .club-section-container .elementOne .head{
+       width:50%;
+       display: flex;
+       margin-left: 20%;
+       height: 100%;
+       padding-top: 6%;
+       padding-left: 8%;
+       background-color: #092225;
+  }
+  .club-section-container .head div{
+    flex: 1;
+  }
+  .club-section-container .head div h2{
+    color: #3DB7A2;
+    font-size: 60px;
+  }
+  .club-section-container .head div p{
+    color:white;
+    font-size: 17px;
+  }
+  
+  .club-section-container .elementTwo{
+    width:57.5%;
+    margin-left: 19.9%;
+    background-color: white;
+    border: 5px solid white;
+  }
+
+  .club-section-container .elementTwo1{
+    margin-top: 3%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .club-section-container .elementTwo2{
+    border: 4px solid white;
+  }
+
+  .associated-books {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;;
+    color: #3DB7A2; 
+  }
+  
+  .associated-booksDiv{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     background-color: #092225;
+  }
+
+
+  .book-details {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #3DB7A2;
+    border: 2px solid #3DB7A2;
+  }
+  .book-details .section{
+    display: flex;
+    border: 2px solid #3DB7A2;
+    margin:10px;
+    background-color: white;
+  }
+  .book-title {
+    font-size: 29px;
+    font-weight: bold;
+  }
+  .book-author {
+    font-size: 19px;
+    color:black;
+  }
+  .book-image {
+    max-width: 150px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+  .book-synopsis{
+    width: 30%;
+  }
+
+  
+  .open-button {
+    background-color: #092225;
+    color: #3DB7A2;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.6s;
+  }
+  
+  .open-button:hover {
+    background-color: #3DB7A2;
+    color: #092225;
+  }
+  .join-div{
+    text-align: center;
+    margin-top: 10%;
+  }
+
+  .join-div p{
+    color:#3DB7A2;
+  }

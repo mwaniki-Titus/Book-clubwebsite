@@ -24,7 +24,6 @@ const Register = () => {
 
         try {
             const response = await axios.post("https://bookclubbackend.onrender.com/usersignup", formData);
-            console.log(response.data); 
         } catch (error) {
             console.error(error);
         }

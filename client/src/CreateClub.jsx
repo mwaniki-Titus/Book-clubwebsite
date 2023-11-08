@@ -87,8 +87,8 @@ const CreateClub = () => {
       const response = await axios.post("https://bookclubbackend.onrender.com/createClub", formData,
       {headers: {
         Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      }},);
+        'Content-Type': 'application/json',}},
+        );
       // Rest of your code for handling the response
       swal({
         title: 'Success',
