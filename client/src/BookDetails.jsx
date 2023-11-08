@@ -102,8 +102,8 @@ const BookDetails = () => {
         <h2>Book Lovers Group</h2>
         <div className='underline1'></div>
         <div className='nav'>
-        <p>Summary</p>
         <p>{item.bookauthor} </p>
+        <p>Summary</p>
         <p>Files</p>
         <p>Members</p>
         <p>About</p>
@@ -122,6 +122,11 @@ const BookDetails = () => {
         {item.reviews.map((review,index)=>(
            <div className="reviewDiv"key={review.summaryID}>
             <p>{review[index].summary}</p>
+            <div className='socials'>
+              <h3>like</h3>
+              <h3>follow</h3>
+              <h3>comment</h3>
+            </div>
           </div>
         ))}
         </div>
