@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import {Link, useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 
 const Register = () => {
@@ -23,13 +24,16 @@ const Register = () => {
 
         try {
             const response = await axios.post("https://bookclubbackend.onrender.com/usersignup", formData);
-            console.log(response.data); 
         } catch (error) {
             console.error(error);
         }
           
         
-        alert("User created")
+        swal({
+            title: 'Success',
+            text: 'User created successfully',
+            icon: 'success',
+          });
         
         
         // Clear the form inputs after submission
@@ -47,9 +51,13 @@ const Register = () => {
     };
 
     return (
+        <>
+        <Navbar/>
+        <div className="sign-in-parent">
         <div className="sign-in-container">
+        <h1>Create Account</h1>
+        <p>This is your Join Us section paragraph. Encourage your site visitors to sign up to join your Book Club.</p>
             <form onSubmit={signUp}>
-                <h1>Create Account</h1>
                 <input type="text" placeholder="Enter your first name.." value={first_name} onChange={(e) =>setFormData({ ...formData, first_name: e.target.value })}/>
                 <input type="text" placeholder="Enter your last name.." value={last_name} onChange={(e) =>setFormData({ ...formData, last_name: e.target.value })}/>
                  <input type="text" placeholder="Enter your username.." value={username} onChange={(e) =>setFormData({ ...formData, username: e.target.value })}/>
@@ -62,6 +70,9 @@ const Register = () => {
             <Link to="/login">Already have an account</Link>
             </button>
         </div>
+        <img src="https://images.pexels.com/photos/6373289/pexels-photo-6373289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+        </div>
+        </>
     );
 };
 

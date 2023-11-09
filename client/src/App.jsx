@@ -1,34 +1,75 @@
 
-import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './Navbar'; // Import your Navbar component
-import Home from './Home'; // Create Home component
-import CreateClub from './CreateClubs'; // Create CreateClub component
-import MyAccount from './MyAccount'; // Create MyAccount component
-import LogIn from './LogIn'; // Create SignIn component
+import React from 'react';
+import "./App.css"
+import { Route, Routes,Navigate} from 'react-router-dom';
+import ClubDisplay from "./ClubDisplay"
+import Others from "./Others"
+import LogIn from './LogIn';
+import About from './About';
+import CreateClub from './CreateClub';
+import ClubSection from './ClubSection';
+import { useState,useEffect } from 'react';
+import Profile from './Profile';
 import SignUp from './SignUp'; // Create SignUp component
+import BookDetails from './BookDetails';
+import Navbar from './Navbar'; // Import your Navbar component
 import JoinBookClub from './JoinBookClub';
 
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-
-
-import './App.css'
-
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const[joined,setJoined]=useState(false)
+  useEffect(() => {
+    // Check if the user is already authenticated by reading from localStorage
+    const storedAuthStatus = localStorage.getItem('isAuthenticated');
+    const joinedStatus = localStorage.getItem("joined")
+    if (storedAuthStatus === 'true') {
+      setIsAuthenticated(true);
+    }
 
-  return(
+    if(joinedStatus === 'true'){
+      setJoined(true);
+    }
+  }, []);
+
+  const changeJoin=()=>{
+    setJoined(true)
+    localStorage.setItem('joined', 'true')
+  }
+
+  const changeJoinOut=()=>{
+    setJoined(false)
+    localStorage.removeItem('joined');
+  }
+  const handleLogin = () => {
+    // Simulate a successful login
+    setIsAuthenticated(true);
+    // Store the authentication status in localStorage
+    localStorage.setItem('isAuthenticated', 'true');
+  };
+
+
+  const handleLogout = () => {
+    // Simulate a logout
+    setIsAuthenticated(false);
+    // Clear the authentication status from localStorage
+    localStorage.removeItem('isAuthenticated');
+  };
+
+  return (
     <>
-    <Navbar />
-      <Routes>
-          <Route exact='true' path="/" element={<Home/>} />
-          <Route path="/create-club" element={<CreateClub/>} />
-          <Route path="/my-account" element={<MyAccount/>} />
-          <Route path="/login" element={<LogIn/>} />
-          <Route path="/signup" element={<SignUp/>} />
-          <Route path="/join-book-club" element={<JoinBookClub/>} />
-      </Routes>
-      </>
+    <Routes>
+      <Route path="/home" element={isAuthenticated ? <ClubDisplay /> : <Navigate to="/login" />}/>
+      <Route path="/create-club" element={isAuthenticated ? ( <CreateClub />) : (<Navigate to="/login" />)}/>
+      <Route path="/profile" element={isAuthenticated ? (<Profile onLoginOut={handleLogout} changeJoinOut={changeJoinOut}/>) : (<Navigate to="/login" />)}/>
+      <Route path="/about" element={<About />}/>
+      <Route path="/login" element={isAuthenticated ? (<Navigate to="/home" />) : (<LogIn onLogin={handleLogin} />)}/>
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/clubs/:clubId" element={<ClubSection changeJoin={changeJoin}/>}/>
+      <Route path="/book/:bookid" element={joined ? (<BookDetails />) : ( <Navigate to='/home' />)} />
+      <Route path="/profile/:userId" element={<Others/>}/>
+     </Routes>  
+    </>
   );
 };
+
 export default App;
