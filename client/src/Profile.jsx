@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import axios from 'axios';
 import './Profile.css'
+import { Link } from "react-router-dom";
 
-const Profile = ({onLoginOut}) => {
+const Profile = ({onLoginOut,changeJoinOut}) => {
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,6 +26,7 @@ const Profile = ({onLoginOut}) => {
         localStorage.removeItem("name")
         localStorage.removeItem("userID")
         onLoginOut()
+        changeJoinOut()
         swal({
             title: 'Success',
             text: 'Logged out successfully',
@@ -63,26 +65,41 @@ const Profile = ({onLoginOut}) => {
     <div className="parentprofile">
      <Navbar />
     <div className="Profile">
+      <div className="profileDiv1">
       <h1>Personal Profile</h1>
+      <p>welcome to the profile page</p>
+      <button><Link to="https://bookclubbackend.onrender.com/admin/">Admin</Link></button>
+      </div>
+      <div className="profileDiv2">
       {loading && <p>Loading user data...</p>}
       {error && <p>Error: {error.message}</p>}
       {userData.name && (
         <div>
-          <p>Name: {userData.name}</p>
-          <p>Email: {userData.email}</p>
+          <p className="name">{userData.name}</p>
+          <p className="email">{userData.email}</p>
+          <div className="profileparentContainer">
           <h3>Clubs:</h3>
+          <div className="profileContainer">
           <ul>
             {userData.clubs.map((club) => (
               <li key={club.clubID}>{club.clubName}</li>
             ))}
           </ul>
+          </div>
+          </div>
+          <div className="profileparentContainer">
           <h3>Followers:</h3>
+          <div className="profileContainer">
           <ul>
             {userData.follower.map((follower) => (
               <li key={follower.user_id}>{follower.name}</li>
             ))}
           </ul>
+          </div>
+          </div>
+          <div className="profileparentContainer">
           <h3>Summaries:</h3>
+          <div className="profileContainer">
           <ul>
             {userData.summaries.map((summary,index) => (
               <li key={summary[index].summaryID}>
@@ -90,11 +107,16 @@ const Profile = ({onLoginOut}) => {
               </li>
             ))}
           </ul>
+          </div>
+          </div>
+          <div className="button">
           <button onClick={handleLogout}>Logout</button>
+          </div>
         </div>
         
       )}
       </div>.
+      </div>
     </div>
   );
 };

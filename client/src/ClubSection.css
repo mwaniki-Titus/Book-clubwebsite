@@ -146,3 +146,47 @@
   .join-div p{
     color:#3DB7A2;
   }
+
+  .form-container {
+    background-color: white;
+    padding: 10px;
+    border: 3px solid #3DB7A2;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+  }
+  
+  .form-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
+  }
+  
+  .form-container textarea,
+  .form-container input {
+    width: 90%;
+    padding: 2px;
+    margin-bottom: 4px;
+    border: 2px solid #3DB7A2;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .form-container button {
+    background-color: #092225;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form-container button:hover {
+    background-color: #3DB7A2;
+  }
+  
+  .parentform-container{
+    margin-left: 31%;
+    margin-bottom: 15%;
+  }

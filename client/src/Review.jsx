@@ -99,7 +99,7 @@ const ReviewsCarousel = () => {
 </div>
 <div className='reviewForm'>
       <h1>Comment and Rating Form</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="form-container"onSubmit={handleSubmit}>
         <div>
           <label htmlFor="comment">Comment:</label>
           <textarea id="comment" name="comment" value={formData.comment} onChange={handleChange}/>

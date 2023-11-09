@@ -10,7 +10,7 @@ const Others = () => {
     const{userId}=useParams()
   
   
-    useEffect(() => {
+      const fetchUserData=()=>{
       const apiUrl = `https://bookclubbackend.onrender.com/profile/${userId}`;
       axios
         .get(apiUrl)
@@ -21,7 +21,11 @@ const Others = () => {
         .catch((error) => {
           setError(error);
           setLoading(false);
-        });
+        });}
+      
+   
+    useEffect(() => {
+        fetchUserData();
     }, []);
 
     const handleFollow =async ()=>{
@@ -40,6 +44,7 @@ const Others = () => {
         if (response.status === 201) {
           // Use 201 status code to indicate successful resource creatio
            alert("User followed")
+           fetchUserData();
         } else {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -50,40 +55,61 @@ const Others = () => {
     }
   
     return (
-      <>
-        <Navbar />
-        <h1>Personal Profile</h1>
-        {loading && <p>Loading user data...</p>}
-        {error && <p>Error: {error.message}</p>}
-        {userData.name && (
-          <div>
-            <p>Name: {userData.name}</p>
-            <p>Email: {userData.email}</p>
-            <h3>Clubs:</h3>
-            <ul>
-              {userData.clubs.map((club) => (
-                <li key={club.clubID}>{club.clubName}</li>
-              ))}
-            </ul>
-            <h3>Followers:</h3>
-            <ul>
-              {userData.follower.map((follower) => (
-                <li key={follower.user_id}>{follower.name}</li>
-              ))}
-            </ul>
-            <h3>Summaries:</h3>
-            <ul>
-              {userData.summaries.map((summary,index) => (
-                <li key={summary[index].summaryID}>
-                  Summary: {summary[index].summary}
-                </li>
-              ))}
-            </ul>
-            <button onClick={handleFollow}>Follow</button>
-          </div>
-          
-        )}
-      </>
+      <div className="parentprofile">
+      <Navbar />
+     <div className="Profile">
+       <div className="profileDiv1">
+       <h1>Personal Profile</h1>
+       <p>welcome to the profile page</p>
+       </div>
+       <div className="profileDiv2">
+       {loading && <p>Loading user data...</p>}
+       {error && <p>Error: {error.message}</p>}
+       {userData.name && (
+         <div>
+           <p className="name">{userData.name}</p>
+           <p className="email">{userData.email}</p>
+           <div className="profileparentContainer">
+           <h3>Clubs:</h3>
+           <div className="profileContainer">
+           <ul>
+             {userData.clubs.map((club) => (
+               <li key={club.clubID}>{club.clubName}</li>
+             ))}
+           </ul>
+           </div>
+           </div>
+           <div className="profileparentContainer">
+           <h3>Followers:</h3>
+           <div className="profileContainer">
+           <ul>
+             {userData.follower.map((follower) => (
+               <li key={follower.user_id}>{follower.name}</li>
+             ))}
+           </ul>
+           </div>
+           </div>
+           <div className="profileparentContainer">
+           <h3>Summaries:</h3>
+           <div className="profileContainer">
+           <ul>
+             {userData.summaries.map((summary,index) => (
+               <li key={summary[index].summaryID}>
+                 {summary[index].summary}
+               </li>
+             ))}
+           </ul>
+           </div>
+           </div>
+           <div className="button">
+           <button onClick={handleFollow}>Follower</button>
+           </div>
+         </div>
+         
+       )}
+       </div>.
+       </div>
+     </div>
     );
   };
   

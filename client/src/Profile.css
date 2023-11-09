@@ -1,64 +1,108 @@
 .parentprofile{
     background-color: #092225;
+    height: 54.6rem;
+    overflow: hidden;
 }
 .Profile {
-  max-width: 70%;
-  margin: 0 auto;
-  padding: 20px;
-  border:1px solid black;
-  background-image: url("https://images.pexels.com/photos/4273468/pexels-photo-4273468.jpeg?auto=compress&cs=tinysrgb&w=1600");
-  background-repeat: no-repeat;
-  background-size: cover;
+  display: flex; 
+}
+
+.profileDiv1{
+   width: 22%;
+   height: 60rem;
+   margin-right: 3px;
+   margin-top: 10px;
+}
+.profileDiv2{
+  width: 78%;
+  height: 50rem;
+  background-color: #fff;
+  overflow-y: scroll;
 }
 
 .Profile h1 {
+  font-size: 2.5em;
   text-align: center;
-  font-size: 3em;
-  margin-bottom: 20px;
+  margin-top: 20%;
+  color: white;
 }
-
-.Profile p {
-  font-size: 1.6em;
-  text-align: center;
+.profileDiv1 button{
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  margin-left: 40%;
 }
 
 .Profile h3{
     text-align: center;
     font-size: 1.6em;
     margin: 30px;
-    color: #3DB7A2;
+    color: black;
+}
+.Profile .name{
+    font-size: 3rem;
+    text-align: center;
+}
+.Profile .email{
+  font-size: 1.5rem;
+    text-align: center;
 }
 
-.Profile ul {
+.Profile .profileContainer ul {
   list-style: none;
-  padding-left: 25%;
   margin: 0;
-  width:60% ;
   display: grid;
-  grid-template-columns: repeat(2, 9fr);
+  grid-template-columns: repeat(2, 10fr);
+  padding:10%;
+  border-radius: 10px;
+  background-color: #eeeded;
 }
 
-.Profile li {
+.Profile .profileContainer li {
   margin: 5px 0;
   border: 4px solid #3DB7A2;
   background-color: #092225;
-  width:50%;
+  border-radius: 15px;
+  width:80%;
   color: #fff;
   font-size: 20px;
   padding:20px;
 }
 
-.Profile button {
+ .button button {
   background-color: #092225;
   color: #fff;
-  padding: 20px 30px;
+  padding: 30px 50px;
   font-size: 1.2em;
   border: none;
   cursor: pointer;
   margin-top: 8%;
-  margin-left: 47%;
+  margin-left: 50%;
+  margin-bottom: 3%;
 }
-
+.profileDiv1 p{
+  text-align: center;
+  color: white;
+}
 .Profile button:hover {
   background-color: #3DB7A2;
+}
+.profileparentContainer{
+  display: flex;
+  width:70%;
+  margin-left: 10%;
+  margin-top: 4%;
+}
+
+.profileparentContainer h3{
+  width:30%;
+}
+
+.profileparentContainer div{
+  width:70%;
+}
+
+#editButton{
+  position: absolute;
+  top: 20px;
 }

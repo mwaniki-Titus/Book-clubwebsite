@@ -5,6 +5,7 @@ import axios from 'axios';
 import Navbar from './Navbar';
 import './ClubSection.css'; 
 import Review from "./Review"
+import CreateBookForm from './CreateBookForm';
 
 const ClubSection = ({changeJoin}) => {
   const [club, setClub] = useState([]);
@@ -12,8 +13,6 @@ const ClubSection = ({changeJoin}) => {
   const [error, setError] = useState(null);
   const { clubId } = useParams();
 
-
-  useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem('token');
       try {
@@ -38,6 +37,7 @@ const ClubSection = ({changeJoin}) => {
       }
     };
 
+  useEffect(() => {
     fetchData();
   }, [clubId]);
 
@@ -127,6 +127,7 @@ const ClubSection = ({changeJoin}) => {
               ))}
               </div>
               <div className='join-div'>
+              <CreateBookForm fetchData={fetchData}/>
                 <h1>Join The Club</h1>
                 <p>Joining a book club is not just about reading books; it's about expanding your horizons, making new friends, and discovering the magic that happens when people come together to explore the world one page at a time.</p>
                 <button  onClick={handleClick} className='open-button '>Join Now</button>

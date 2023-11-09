@@ -34,7 +34,10 @@ const App = () => {
     localStorage.setItem('joined', 'true')
   }
 
-
+  const changeJoinOut=()=>{
+    setJoined(false)
+    localStorage.removeItem('joined');
+  }
   const handleLogin = () => {
     // Simulate a successful login
     setIsAuthenticated(true);
@@ -55,7 +58,7 @@ const App = () => {
     <Routes>
       <Route path="/home" element={isAuthenticated ? <ClubDisplay /> : <Navigate to="/login" />}/>
       <Route path="/create-club" element={isAuthenticated ? ( <CreateClub />) : (<Navigate to="/login" />)}/>
-      <Route path="/profile" element={isAuthenticated ? (<Profile onLoginOut={handleLogout}/>) : (<Navigate to="/login" />)}/>
+      <Route path="/profile" element={isAuthenticated ? (<Profile onLoginOut={handleLogout} changeJoinOut={changeJoinOut}/>) : (<Navigate to="/login" />)}/>
       <Route path="/about" element={<About />}/>
       <Route path="/login" element={isAuthenticated ? (<Navigate to="/home" />) : (<LogIn onLogin={handleLogin} />)}/>
       <Route path="/signup" element={<SignUp />} />
