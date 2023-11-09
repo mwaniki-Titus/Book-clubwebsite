@@ -51,7 +51,7 @@ const App = () => {
       <Route path="/" element={<Landing/>}/>
       <Route path="/home" element={isAuthenticated ? <ClubDisplay /> : <Navigate to="/login" />}/>
       <Route path="/create-club" element={isAuthenticated ? ( <CreateClub />) : (<Navigate to="/login" />)}/>
-      <Route path="/profile" element={isAuthenticated ? (<Profile />) : (<Navigate to="/login" />)}/>
+      <Route path="/profile" element={isAuthenticated ? (<Profile onLoginOut={handleLogout}/>) : (<Navigate to="/login" />)}/>
       <Route path="/about" element={<About />}/>
       <Route path="/login" element={isAuthenticated ? (<Navigate to="/home" />) : (<LogIn onLogin={handleLogin} />)}/>
       <Route path="/signup" element={<SignUp />} />

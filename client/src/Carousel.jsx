@@ -29,7 +29,7 @@ const Carousel = () => {
         return (
           <div
             key={index}
-            className={index === current ? 'slide active' : 'slide'}
+            className={index === current ? 'slide active' : 'slid'}
           >
             {index === current && (
               <img src={slide.image} alt="domestic animal" className="image" />
