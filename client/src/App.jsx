@@ -1,3 +1,4 @@
+
 import React from 'react';
 import "./App.css"
 import { Route, Routes,Navigate} from 'react-router-dom';
@@ -9,9 +10,10 @@ import CreateClub from './CreateClub';
 import ClubSection from './ClubSection';
 import { useState,useEffect } from 'react';
 import Profile from './Profile';
-
 import SignUp from './SignUp'; // Create SignUp component
 import BookDetails from './BookDetails';
+import Navbar from './Navbar'; // Import your Navbar component
+import JoinBookClub from './JoinBookClub';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
