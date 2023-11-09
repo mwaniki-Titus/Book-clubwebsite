@@ -19,17 +19,19 @@ const App = () => {
   useEffect(() => {
     // Check if the user is already authenticated by reading from localStorage
     const storedAuthStatus = localStorage.getItem('isAuthenticated');
+    const joinedStatus = localStorage.getItem("joined")
     if (storedAuthStatus === 'true') {
       setIsAuthenticated(true);
     }
 
-    if(joined === 'true'){
+    if(joinedStatus === 'true'){
       setJoined(true);
     }
   }, []);
 
   const changeJoin=()=>{
     setJoined(true)
+    localStorage.setItem('joined', 'true')
   }
 
 
