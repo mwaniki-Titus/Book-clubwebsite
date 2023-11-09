@@ -13,15 +13,14 @@ const BookDetails = () => {
   const userid = localStorage.getItem('userID')
   const [personsummary, setpersonSummary] = useState({
         summary:"",
-        bookID:"",
+        bookID:bookid,
         userID:""
   }); 
   
 
 
   const {summary,bookID,userID}= personsummary
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
       const token = localStorage.getItem('token');
       try {
         setpersonSummary({...personsummary,userID:userid})
@@ -38,6 +37,7 @@ const BookDetails = () => {
 
           if (response.status !== 200) {
             throw new Error(`HTTP error! Status: ${response.status}`);
+            
           }
 
           setBook(response.data);
@@ -50,9 +50,13 @@ const BookDetails = () => {
       }
     };
 
-    fetchData();
-  }, [bookid]);
 
+  useEffect(() => {
+    if (bookID) {
+      fetchData();
+    }
+  }, [bookID]);
+  
 
   const handleSubmit = async (e) => {
     
@@ -60,14 +64,13 @@ const BookDetails = () => {
     try {
       const token = localStorage.getItem('token');
       console.log(personsummary)
-      setpersonSummary({ ...personsummary, bookID: bookid });
       const response = await axios.post(
         'https://bookclubbackend.onrender.com/summaries',personsummary,);
 
       if (response.status === 201) {
     
         alert('Summary added successfully');
-        location.reload();
+        fetchData()
       } else {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -122,7 +125,7 @@ const BookDetails = () => {
          </form>
         {item.reviews.map((review,index)=>(
            <div className="reviewDiv"key={review[index].summaryID}>
-            <h3><Link to={`/profile/${review[index].userID}`}>{review[index].user}</Link></h3>
+            <p className='usernameLocal'><Link to={`/profile/${review[index].userID}`}>{review[index].user}</Link></p>
             <p>{review[index].summary}</p>
             <div className='socials'>
               <h3>like</h3>

@@ -1,0 +1,64 @@
+.parentprofile{
+    background-color: #092225;
+}
+.Profile {
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+  border:1px solid black;
+  background-image: url("https://images.pexels.com/photos/4273468/pexels-photo-4273468.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Profile h1 {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.Profile p {
+  font-size: 1.6em;
+  text-align: center;
+}
+
+.Profile h3{
+    text-align: center;
+    font-size: 1.6em;
+    margin: 30px;
+    color: #3DB7A2;
+}
+
+.Profile ul {
+  list-style: none;
+  padding-left: 25%;
+  margin: 0;
+  width:60% ;
+  display: grid;
+  grid-template-columns: repeat(2, 9fr);
+}
+
+.Profile li {
+  margin: 5px 0;
+  border: 4px solid #3DB7A2;
+  background-color: #092225;
+  width:50%;
+  color: #fff;
+  font-size: 20px;
+  padding:20px;
+}
+
+.Profile button {
+  background-color: #092225;
+  color: #fff;
+  padding: 20px 30px;
+  font-size: 1.2em;
+  border: none;
+  cursor: pointer;
+  margin-top: 8%;
+  margin-left: 47%;
+}
+
+.Profile button:hover {
+  background-color: #3DB7A2;
+}

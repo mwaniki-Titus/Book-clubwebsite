@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import axios from 'axios';
+import './Profile.css'
 
 const Profile = ({onLoginOut}) => {
   const [userData, setUserData] = useState({});
@@ -59,8 +60,9 @@ const Profile = ({onLoginOut}) => {
   }, []);
 
   return (
-    <>
-      <Navbar />
+    <div className="parentprofile">
+     <Navbar />
+    <div className="Profile">
       <h1>Personal Profile</h1>
       {loading && <p>Loading user data...</p>}
       {error && <p>Error: {error.message}</p>}
@@ -77,14 +79,14 @@ const Profile = ({onLoginOut}) => {
           <h3>Followers:</h3>
           <ul>
             {userData.follower.map((follower) => (
-              <li key={follower.user_id}>User ID: {follower.user_id}</li>
+              <li key={follower.user_id}>{follower.name}</li>
             ))}
           </ul>
           <h3>Summaries:</h3>
           <ul>
             {userData.summaries.map((summary,index) => (
               <li key={summary[index].summaryID}>
-                Summary: {summary[index].summary}
+                {summary[index].summary}
               </li>
             ))}
           </ul>
@@ -92,7 +94,8 @@ const Profile = ({onLoginOut}) => {
         </div>
         
       )}
-    </>
+      </div>.
+    </div>
   );
 };
 

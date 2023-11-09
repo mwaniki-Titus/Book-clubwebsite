@@ -81,7 +81,7 @@ const ReviewsCarousel = () => {
 
   return (
     <>
-    <div>
+    <div className='reviewContent'>
   <h2>Reviews</h2>
   {Array.isArray(reviews) && reviews.length > 0 ? (
     <Carousel showArrows={true}>
@@ -97,7 +97,7 @@ const ReviewsCarousel = () => {
     <p>No reviews available.</p>
   )}
 </div>
-<div>
+<div className='reviewForm'>
       <h1>Comment and Rating Form</h1>
       <form onSubmit={handleSubmit}>
         <div>

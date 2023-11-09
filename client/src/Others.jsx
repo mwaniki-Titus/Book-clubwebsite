@@ -68,7 +68,7 @@ const Others = () => {
             <h3>Followers:</h3>
             <ul>
               {userData.follower.map((follower) => (
-                <li key={follower.user_id}>User ID: {follower.user_id}</li>
+                <li key={follower.user_id}>{follower.name}</li>
               ))}
             </ul>
             <h3>Summaries:</h3>

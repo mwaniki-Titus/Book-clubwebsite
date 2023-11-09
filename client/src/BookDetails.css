@@ -115,3 +115,9 @@
     font-weight: 4px;
     color: #092225;
 }
+
+.usernameLocal a{
+    color: #092225 !important;
+    text-decoration: none;
+    font-size: 20px;
+}

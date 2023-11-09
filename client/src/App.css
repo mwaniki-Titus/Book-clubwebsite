@@ -231,23 +231,23 @@ nav {
   padding: 10px 0; 
 }
 
-ul {
+.nav ul {
   list-style: none; 
   padding: 0;
   display: flex; 
   justify-content: center; 
 }
 
-li {
+.nav li {
   margin: 0 10px; 
 }
 
-a {
+.nav a {
   text-decoration: none;
   color: #fff; 
 }
 
-a:hover {
+.nav a:hover {
   text-decoration: underline;
 }
 /*About page styling*/
@@ -408,7 +408,9 @@ padding-top: 20px;
   justify-content: center; 
   text-align: center; 
 }
-
+.club-info a{
+  text-decoration: none;
+}
 .club-info h2{
   color: #3DB7A2;
   text-align: center;
