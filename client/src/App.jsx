@@ -2,9 +2,8 @@ import React from 'react';
 import "./App.css"
 import { Route, Routes,Navigate} from 'react-router-dom';
 import ClubDisplay from "./ClubDisplay"
-
+import Others from "./Others"
 import LogIn from './LogIn';
-import Landing from './Landing'
 import About from './About';
 import CreateClub from './CreateClub';
 import ClubSection from './ClubSection';
@@ -22,6 +21,10 @@ const App = () => {
     const storedAuthStatus = localStorage.getItem('isAuthenticated');
     if (storedAuthStatus === 'true') {
       setIsAuthenticated(true);
+    }
+
+    if(joined === 'true'){
+      setJoined(true);
     }
   }, []);
 
@@ -48,7 +51,6 @@ const App = () => {
   return (
     <>
     <Routes>
-      <Route path="/" element={<Landing/>}/>
       <Route path="/home" element={isAuthenticated ? <ClubDisplay /> : <Navigate to="/login" />}/>
       <Route path="/create-club" element={isAuthenticated ? ( <CreateClub />) : (<Navigate to="/login" />)}/>
       <Route path="/profile" element={isAuthenticated ? (<Profile onLoginOut={handleLogout}/>) : (<Navigate to="/login" />)}/>
@@ -57,6 +59,7 @@ const App = () => {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/clubs/:clubId" element={<ClubSection changeJoin={changeJoin}/>}/>
       <Route path="/book/:bookid" element={joined ? (<BookDetails />) : ( <Navigate to='/home' />)} />
+      <Route path="/profile/:userId" element={<Others/>}/>
      </Routes>  
     </>
   );

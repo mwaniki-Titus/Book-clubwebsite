@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 import './BookDetails.css'
 
 const BookDetails = () => {
@@ -120,7 +121,8 @@ const BookDetails = () => {
            <button type="submit">Add Summary</button>
          </form>
         {item.reviews.map((review,index)=>(
-           <div className="reviewDiv"key={review.summaryID}>
+           <div className="reviewDiv"key={review[index].summaryID}>
+            <h3><Link to={`/profile/${review[index].userID}`}>{review[index].user}</Link></h3>
             <p>{review[index].summary}</p>
             <div className='socials'>
               <h3>like</h3>

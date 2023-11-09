@@ -34,7 +34,7 @@ function Login({onLogin}) {
               text: 'Logged in successfully',
               icon: 'success',
             });
-            navigate("/")
+            navigate("/home")
             let res = response.data.access_token
          localStorage.setItem('token', res ); // Store the token in localStorage
          localStorage.setItem("name", username)
