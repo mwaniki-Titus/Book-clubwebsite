@@ -1,6 +1,0 @@
-# render.yaml
-
-services:
-  - name: web
-    buildCommand: npm install && vite build
-    startCommand: serve -s dist
