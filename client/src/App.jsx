@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import Profile from './Profile';
 import SignUp from './SignUp';
 import BookDetails from './BookDetails';
-import Navbar from './Navbar';
+
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
