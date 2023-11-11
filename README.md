@@ -1,5 +1,4 @@
 # Book-clubwebsite
-Book Club Website
 Flask API with SQLAlchemy and Flask-Admin
 This React application is a book club website that allows users to explore book clubs, view book details, create clubs, and interact with other members. Users can log in, sign up, and access various features based on their authentication status. The website uses React Router for navigation and state management to provide a seamless user experience.
 
@@ -7,7 +6,8 @@ The application is structured into different routes, including the landing page,
 
 This project is a Flask-based API for managing clubs, users, book summaries, and ratings. It uses SQLAlchemy for database management and Flask-Admin for administrative access to the database. This README provides an overview of the project and instructions on how to set it up and use it.
 
-Table of Contents
+# Table of Contents
+
 Features
 Overview
 Prerequisites
@@ -18,7 +18,7 @@ Endpoints
 Admin Access
 Contributing
 License
-Features
+# Features
 User registration and login.
 Club management with details such as name, description, image, location, and date founded.
 Book management with details such as title, author, image, club association, summaries, and ratings.
@@ -26,26 +26,24 @@ User-written book summaries.
 User-following system.
 User ratings and comments on clubs.
 Administrative access to manage users, clubs, books, ratings, and summaries.
-Overview
+# Overview
 Book Club Website provides a seamless and interactive experience for users with various features and components. It enables users to access a wide range of functionalities:
 
-1.Landing Page: A welcoming landing page where users can get a glimpse of the book club world.
+1. Club Display: Explore and join existing book clubs to connect with like-minded readers.
 
-2.Club Display: Explore and join existing book clubs to connect with like-minded readers.
+2. Create Club: Organize your book club, set up club details, and manage memberships.
 
-3.Create Club: Organize your book club, set up club details, and manage memberships.
+3. User Profile: Personalized user profiles to track activities, manage book clubs, and access book summaries.
 
-4.User Profile: Personalized user profiles to track activities, manage book clubs, and access book summaries.
+4. About Section: Learn more about the platform, its mission, and vision.
 
-5.About Section: Learn more about the platform, its mission, and vision.
+5.Log In/Sign Up: User authentication with a smooth transition between login and signup.
 
-6.Log In/Sign Up: User authentication with a smooth transition between login and signup.
+6. Club Section: Dive deep into specific book clubs, view book details, and participate in discussions.
 
-7.Club Section: Dive deep into specific book clubs, view book details, and participate in discussions.
+7.Book Details: Explore the intricate details of books, including summaries, authors, and more.
 
-8.Book Details: Explore the intricate details of books, including summaries, authors, and more.
-
-Prerequisites
+# Prerequisites
 Before setting up the project, make sure you have the following installed:
 
 Python 3.x
@@ -61,16 +59,16 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 Install dependencies:
 pip install -r requirements.txt
-Configuration
+# Configuration
 Create a .env file in the project's root directory and add the following environment variables:
 SECRET_KEY=your-secret-key
 DB_URL=your-database-url
 Replace your-secret-key with a secure secret key and your-database-url with the URL to your PostgreSQL database.
-Usage
+# Usage
 Start the Flask application:
  npm run dev
 Access the API at http://localhost:5173/.
-Endpoints
+# Endpoints
 Here are some of the API endpoints available:
 
 /usersignup: Register a new user.
@@ -96,17 +94,17 @@ You can manage users, clubs, books, ratings, summaries, and more using the admin
 Contributing
 We welcome contributions from the community. If you find a bug, have a feature request, or want to contribute code, please read our Contribution Guidelines for details on how to get involved.
 
-License
+# License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-Team Members
+# Team Members
 1.Titus Munyoki - Backend
 
 2.Natalie Wanjiru- Backend
 
-3.Abdi Halake - Frontend
+3. Abdi Halake - Frontend
 
-4.Faith Kaburu-Frontend
+4. Faith Kaburu-Frontend
 
 5.Philip Ogaye - Frontend
 
